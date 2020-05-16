@@ -207,16 +207,6 @@ class BotClient(discord.AutoShardedClient):
 
             return _user
 
-        if message.author.bot or \
-                message.content is None or \
-                (message.guild is not None and len(message.content.split(' ')[0]) < 2) or \
-                message.tts or \
-                len(message.attachments) > 0 or \
-                self.match_string is None:
-
-            # either a bot or cannot be a command
-            return
-
         elif message.guild is None:
             # command has been DMed. dont check for prefix :)
             split = message.content.split(' ')
